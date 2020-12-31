@@ -31,4 +31,15 @@ public class PlayerController : BaseIsometricController
         Vector3 newPosition = wall.transform.position + (wall.transform.right * wallSpawnOffset);
         transform.position = new Vector3(newPosition.x, 0, newPosition.z);
     }
+    protected void OnTriggerEnter(Collider collider) 
+    {
+        if(collider.gameObject.layer == 11)
+        {
+            WreckEntryPoint wreckEntry = collider.gameObject.GetComponent<WreckEntryPoint>();
+            if(wreckEntry)
+            {
+                playerStateManager.SetOnShip();
+            }
+        }
+    }
 }

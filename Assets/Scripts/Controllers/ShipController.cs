@@ -9,6 +9,8 @@ public class ShipController : BaseIsometricController
     [SerializeField] private float maxVelocity = 10f;
     [SerializeField] private Rigidbody rb;
     [SerializeField] private TextMeshProUGUI velocityText;
+    [SerializeField] private WreckEntryPoint entryPoint;
+    private WreckEntryPoint currentEntry;
 
     private Plane plane;
 
@@ -18,6 +20,23 @@ public class ShipController : BaseIsometricController
     {
         base.Start();
         plane = new Plane(Vector3.up, Vector3.zero);
+    }
+
+    public override void Reactivate()
+    {
+        base.Reactivate();
+        if(currentEntry)
+        {
+            Destroy(currentEntry);
+        }
+        
+        rb.constraints = RigidbodyConstraints.None;
+    }
+
+    public override void Deactivate()
+    {
+        base.Deactivate();
+        rb.constraints = RigidbodyConstraints.FreezeAll;
     }
 
     protected override void Look()
@@ -76,7 +95,7 @@ public class ShipController : BaseIsometricController
         if(wall)
         {
             playerStateManager.SetOnFoot(wall);
-            rb.constraints = RigidbodyConstraints.FreezeAll;
+            currentEntry = Instantiate(entryPoint, collision.gameObject.transform.position, Quaternion.identity);
         }
     }
 }

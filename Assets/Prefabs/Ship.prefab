@@ -269,6 +269,8 @@ MonoBehaviour:
   maxVelocity: 10
   rb: {fileID: 7089141782162486748}
   velocityText: {fileID: 0}
+  entryPoint: {fileID: 4705545657892832516, guid: 7bd19870d9fbd1e499f1592aa76424cb,
+    type: 3}
 --- !u!54 &7089141782162486748
 Rigidbody:
   m_ObjectHideFlags: 0

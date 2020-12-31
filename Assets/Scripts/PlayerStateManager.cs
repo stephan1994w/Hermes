@@ -37,9 +37,10 @@ public class PlayerStateManager : MonoBehaviour
     public void SetOnFoot(WreckWall wall)
     {
         playerState = PlayerState.FOOT;
-        ship.IsActive = false;
-        player.IsActive = true;
         player.gameObject.SetActive(true);
+
+        ship.Deactivate();
+        player.Reactivate();
 
         if(wall)
         {
@@ -51,9 +52,10 @@ public class PlayerStateManager : MonoBehaviour
     public void SetOnShip()
     {
         playerState = PlayerState.SHIP;
-        ship.IsActive = true;
-        player.IsActive = false;
         player.gameObject.SetActive(false);
+
+        ship.Reactivate();
+        player.Deactivate();
     }
 }
 

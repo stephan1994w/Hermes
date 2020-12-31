@@ -14,13 +14,17 @@ public abstract class BaseIsometricController : MonoBehaviour
     protected PlayerStateManager playerStateManager;
     protected Camera _camera;
     protected bool isActive;
-    public bool IsActive
+
+    public virtual void Reactivate()
     {
-        get => isActive;
-        set {
-            virtualCamera.gameObject.SetActive(value);
-            isActive = value;
-        }
+        isActive = true;
+        virtualCamera.gameObject.SetActive(true);
+    }
+
+    public virtual void Deactivate()
+    {
+        isActive = false;
+        virtualCamera.gameObject.SetActive(false);
     }
 
     protected virtual void Awake()
