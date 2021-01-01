@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerController : BaseIsometricController
 {
     [SerializeField] private float wallSpawnOffset;
+    private bool canExit;
     protected override void Look()
     {
         Vector3 totalDirection = Vector3.Normalize(rightMovement + upMovement);
@@ -36,10 +37,7 @@ public class PlayerController : BaseIsometricController
         if(collider.gameObject.layer == 11)
         {
             WreckEntryPoint wreckEntry = collider.gameObject.GetComponent<WreckEntryPoint>();
-            if(wreckEntry)
-            {
-                playerStateManager.SetOnShip();
-            }
+            canExit = wreckEntry!=null;
         }
     }
 }
