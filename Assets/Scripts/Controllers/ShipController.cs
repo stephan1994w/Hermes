@@ -48,10 +48,10 @@ public class ShipController : BaseController
 
         activeForwardSpeed = inputManager.GetMovementVertical() * forwardSpeed;
 
-        // thrust.z = inputManager.GetMovementVertical(); 
-        // adjustThrustZ = Mathf.Abs(thrust.z) > 0.1f; 
-        // throttle += thrust.z * throttleIncrease; 
-        // throttle = Mathf.Clamp(throttle, minThrottle, maxThrottle); 
+        thrust.z = inputManager.GetMovementVertical(); 
+        adjustThrustZ = Mathf.Abs(thrust.z) > 0.1f; 
+        throttle += thrust.z * throttleIncrease; 
+        throttle = Mathf.Clamp(throttle, minThrottle, maxThrottle); 
         
     }
 
@@ -59,14 +59,14 @@ public class ShipController : BaseController
     {
         transform.Rotate(-mouseDistance.y * lookRotateSpeed * Time.deltaTime, mouseDistance.x * lookRotateSpeed * Time.deltaTime, rollInput * rollSpeed * Time.deltaTime, Space.Self);
         
-        transform.position += transform.forward * activeForwardSpeed * Time.deltaTime;
+        // transform.position += transform.forward * activeForwardSpeed * Time.deltaTime;
         
         
         // rb.AddTorque(-mouseDistance.y * lookRotateSpeed * Time.deltaTime, mouseDistance.x * lookRotateSpeed * Time.deltaTime, rollInput * rollSpeed * Time.deltaTime,ForceMode.Force);
         // rb.AddForce(transform.forward * activeForwardSpeed * Time.deltaTime, ForceMode.Force);
-        // if(adjustThrustZ) 
-        // { 
-        //     rb.AddForce(transform.forward * (Mathf.Abs(thrust.z) * throttle), ForceMode.Force); 
-        // } 
+        if(adjustThrustZ) 
+        { 
+            rb.AddForce(transform.forward * (Mathf.Abs(thrust.z) * throttle), ForceMode.Force); 
+        } 
     }
 }

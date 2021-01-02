@@ -8369,7 +8369,7 @@ Camera:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_RenderingPath: -1
+  m_RenderingPath: 3
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
   m_TargetEye: 3
@@ -10257,18 +10257,38 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7089141782162486748, guid: 495971f1f043f6e40b1d59a60e386bfd,
         type: 3}
+      propertyPath: m_Drag
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7089141782162486748, guid: 495971f1f043f6e40b1d59a60e386bfd,
+        type: 3}
       propertyPath: m_AngularDrag
-      value: 0
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 7089141782162486748, guid: 495971f1f043f6e40b1d59a60e386bfd,
         type: 3}
       propertyPath: m_Constraints
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7089141782162486748, guid: 495971f1f043f6e40b1d59a60e386bfd,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7089141782162486749, guid: 495971f1f043f6e40b1d59a60e386bfd,
         type: 3}
       propertyPath: rollSpeed
       value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 7089141782162486749, guid: 495971f1f043f6e40b1d59a60e386bfd,
+        type: 3}
+      propertyPath: maxThrottle
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 7089141782162486749, guid: 495971f1f043f6e40b1d59a60e386bfd,
+        type: 3}
+      propertyPath: minThrottle
+      value: -50
       objectReference: {fileID: 0}
     - target: {fileID: 7089141782162486749, guid: 495971f1f043f6e40b1d59a60e386bfd,
         type: 3}
@@ -10294,6 +10314,11 @@ PrefabInstance:
         type: 3}
       propertyPath: rollAcceleration
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7089141782162486749, guid: 495971f1f043f6e40b1d59a60e386bfd,
+        type: 3}
+      propertyPath: throttleIncrease
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7089141782162486750, guid: 495971f1f043f6e40b1d59a60e386bfd,
         type: 3}
