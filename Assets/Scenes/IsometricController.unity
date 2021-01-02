@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 7.42
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: f12aa8d347814494590cba85d3d7666f, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 4eaf33b9fc1ef1c44b468c796abffd7f, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -5851,7 +5851,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cbb6d20e6b842644ba243c2349d85d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnRange: 100
+  spawnRange: 50
   amountToSpawn: 100
   asteroid: {fileID: 8961468536982146371, guid: 7fb3ac20923313c40a1d4c15d3948fd6,
     type: 3}
@@ -10268,7 +10268,7 @@ PrefabInstance:
     - target: {fileID: 7089141782162486749, guid: 495971f1f043f6e40b1d59a60e386bfd,
         type: 3}
       propertyPath: rollSpeed
-      value: 120
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 7089141782162486749, guid: 495971f1f043f6e40b1d59a60e386bfd,
         type: 3}
@@ -10293,7 +10293,7 @@ PrefabInstance:
     - target: {fileID: 7089141782162486749, guid: 495971f1f043f6e40b1d59a60e386bfd,
         type: 3}
       propertyPath: rollAcceleration
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7089141782162486750, guid: 495971f1f043f6e40b1d59a60e386bfd,
         type: 3}

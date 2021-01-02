@@ -15,6 +15,7 @@ public class MouseOverlay : MonoBehaviour
     private Color tempColor;
 
     private void Start() {
+        Cursor.visible = false;
         _camera = Camera.main;
         inputManager = InputManager.Instance;
         centrePoint = new Vector3(Screen.width/2, Screen.height/2, _camera.nearClipPlane);
@@ -31,7 +32,7 @@ public class MouseOverlay : MonoBehaviour
         Vector2 [] points = { Vector2.zero, movePos};
         line.Points = points;
 
-        
+
 
     }
 

@@ -42,7 +42,7 @@ Light:
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
-  m_Color: {r: 0, g: 0.819211, b: 1, a: 1}
+  m_Color: {r: 0.2509804, g: 0.65882355, b: 1, a: 1}
   m_Intensity: 2.37
   m_Range: 3.23
   m_SpotAngle: 30
@@ -134,7 +134,7 @@ Light:
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
-  m_Color: {r: 0, g: 0.819211, b: 1, a: 1}
+  m_Color: {r: 0.2509804, g: 0.65882355, b: 1, a: 1}
   m_Intensity: 2.37
   m_Range: 3.23
   m_SpotAngle: 30
@@ -286,8 +286,8 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0, g: 0.81451416, b: 1, a: 1}
-      key1: {r: 0, g: 0.78036356, b: 1, a: 1}
+      key0: {r: 0.25, g: 0.6558826, b: 1, a: 1}
+      key1: {r: 0.2509804, g: 0.65882355, b: 1, a: 1}
       key2: {r: 1, g: 1, b: 1, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -394,7 +394,7 @@ Light:
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
-  m_Color: {r: 0, g: 0.819211, b: 1, a: 1}
+  m_Color: {r: 0.2509804, g: 0.65882355, b: 1, a: 1}
   m_Intensity: 2.37
   m_Range: 3.23
   m_SpotAngle: 30
@@ -546,8 +546,8 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0, g: 0.81451416, b: 1, a: 1}
-      key1: {r: 0, g: 0.78036356, b: 1, a: 1}
+      key0: {r: 0.25, g: 0.6558826, b: 1, a: 1}
+      key1: {r: 0.2509804, g: 0.65882355, b: 1, a: 1}
       key2: {r: 1, g: 1, b: 1, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -754,8 +754,8 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0, g: 0.81451416, b: 1, a: 1}
-      key1: {r: 0, g: 0.78036356, b: 1, a: 1}
+      key0: {r: 0.25, g: 0.6558826, b: 1, a: 1}
+      key1: {r: 0.2509804, g: 0.65882355, b: 1, a: 1}
       key2: {r: 1, g: 1, b: 1, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -801,6 +801,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fc89e6e619bc49942817f6e82073b05e,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fc89e6e619bc49942817f6e82073b05e,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fc89e6e619bc49942817f6e82073b05e,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fc89e6e619bc49942817f6e82073b05e,
         type: 3}
