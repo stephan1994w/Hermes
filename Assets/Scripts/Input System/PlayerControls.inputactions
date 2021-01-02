@@ -150,10 +150,10 @@
                     "interactions": "Press(behavior=2)"
                 },
                 {
-                    "name": "Rotation",
+                    "name": "Look",
                     "type": "PassThrough",
-                    "id": "58b7270e-2ba5-4cfc-ac27-711ae9d58dc9",
-                    "expectedControlType": "",
+                    "id": "42a6f965-590a-43d3-9dd8-2f925733cedf",
+                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": ""
                 }
@@ -182,114 +182,26 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "Stick",
-                    "id": "3194e2e6-bd76-4f73-b15b-53453555ca75",
-                    "path": "2DVector",
+                    "name": "",
+                    "id": "d52925a9-c415-4e1f-a587-6057b6e11e60",
+                    "path": "<Mouse>/position",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
-                    "action": "Rotation",
-                    "isComposite": true,
+                    "groups": "Keyboard",
+                    "action": "Look",
+                    "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "up",
-                    "id": "278c09da-573a-4156-9dd6-0a8c78a87a65",
-                    "path": "<Gamepad>/rightStick/up",
+                    "name": "",
+                    "id": "3d603b32-10a3-423b-afb2-035072ef0ea2",
+                    "path": "<Gamepad>/rightStick",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "Rotation",
+                    "action": "Look",
                     "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "down",
-                    "id": "17322c44-e1c9-477d-9a3f-20ca69ef2b61",
-                    "path": "<Gamepad>/rightStick/down",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Rotation",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "left",
-                    "id": "50346bfa-e4cd-4e9d-a6cf-cb849f072454",
-                    "path": "<Gamepad>/rightStick/left",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Rotation",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "right",
-                    "id": "fe5f41ce-ce1d-4e26-9284-f9a3082976f4",
-                    "path": "<Gamepad>/rightStick/right",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Rotation",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "Keyboard",
-                    "id": "23a24eb1-b236-4b9d-be28-a18442a370b4",
-                    "path": "2DVector",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Rotation",
-                    "isComposite": true,
                     "isPartOfComposite": false
-                },
-                {
-                    "name": "up",
-                    "id": "67db893d-628f-4af1-8e7f-dd551c586377",
-                    "path": "<Keyboard>/upArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Rotation",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "down",
-                    "id": "a2771c45-5a98-45f3-a133-e1bceac087bd",
-                    "path": "<Keyboard>/downArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Rotation",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "left",
-                    "id": "3c783f75-d8c7-4c71-93f1-6ae0efd9fa4b",
-                    "path": "<Keyboard>/leftArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Rotation",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "right",
-                    "id": "20f2afef-00dd-4099-87d9-e095c3c1312a",
-                    "path": "<Keyboard>/rightArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Rotation",
-                    "isComposite": false,
-                    "isPartOfComposite": true
                 }
             ]
         },

@@ -8,7 +8,7 @@ public class InputManager : MonoBehaviour
     public static InputManager Instance => _instance;
     private PlayerControls playerControls;
 
-    private Vector2 lookPosition;
+    private Vector2 lookPosition = new Vector2();
 
     private void Awake()
     {
@@ -23,7 +23,7 @@ public class InputManager : MonoBehaviour
 
         playerControls = new PlayerControls();
 
-        playerControls.Ship.Rotation.performed += ctx => lookPosition = ctx.ReadValue<Vector2>();
+        // playerControls.Ship.Rotation.performed += ctx => lookPosition = ctx.ReadValue<Vector2>();
     }
 
     private void OnEnable() {
@@ -47,6 +47,11 @@ public class InputManager : MonoBehaviour
     {
         Vector2 pos = lookPosition;
         return new Vector3(pos.x, 0, pos.y);
+    }
+
+    public Vector3 GetMousePosition()
+    {
+        return playerControls.Ship.Look.ReadValue<Vector2>();
     }
 
     public Vector2 GetFPSMovement()

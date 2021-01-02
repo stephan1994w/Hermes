@@ -4,98 +4,137 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class ShipController : BaseIsometricController
-{
-    [SerializeField] private float maxVelocity = 10f;
+public class ShipController : BaseController
+{   
     [SerializeField] private Rigidbody rb;
-    [SerializeField] private TextMeshProUGUI velocityText;
-    [SerializeField] private WreckEntryPoint entryPoint;
-    private WreckEntryPoint currentEntry;
 
-    private Plane plane;
+    private bool adjustPitch = false;
+    private bool adjustYaw = false;
+    private bool adjustThrustX = false;
+    private bool adjustThrustY = false;
+    private bool adjustThrustZ = false;    
 
-    private Vector3 horizontalVelocity, verticalVelocity, horizontalInput, verticalInput, rotationInput, inputDirection;
+    private float pitch = 0.0f;
+    private float yaw = 0.0f;
+    private float roll = 0.0f;
+    private float pitchDiff = 0.0f;
 
-    protected override void Start()
-    {
+    private float rotationEasing = 0.2f;
+
+    private Vector3 thrust = Vector3.zero;
+    private Vector3 rotation = Vector3.zero;
+    private float throttle = 0f;
+
+    [Range(0,50)]
+    public float throttleIncrease = 0.25f;
+
+    [Range(0,500f)]
+    public float maxThrottle = 4f;
+
+    [Range(-500,100f)]
+    public float minThrottle = -2f;
+
+    [Range(0, 100f)]
+    public float pitchStrength = 15f;
+
+    [Range(0, 100f)]
+    public float yawStrength = 1.5f;
+    
+    [Range(0, 10f)]
+    public float rollStrength = 1.5f;
+    
+    float qtrScreenH;
+    float qtrScreenW;
+    Vector3 centerScreen;
+    private Vector3 targetRotation;
+    private Vector2 mousePosition;
+    
+    protected override void Start() {
         base.Start();
-        plane = new Plane(Vector3.up, Vector3.zero);
-    }
+        centerScreen = new Vector3(Screen.width / 2, Screen.height / 2, 0);
+        qtrScreenH = Screen.height * 0.25f;
+        qtrScreenW = Screen.width * 0.25f;
+	}
 
-    public override void Reactivate()
+    private void Update()
     {
-        base.Reactivate();
-        if(currentEntry)
-        {
-            Destroy(currentEntry);
-        }
-        
-        rb.constraints = RigidbodyConstraints.None;
+        pitch = GetPitch();
+        thrust.z = inputManager.GetMovementVertical();
+        mousePosition = inputManager.GetMousePosition();
+        adjustPitch = Mathf.Abs(pitch) > 0.1f;
+        adjustThrustX = Mathf.Abs(thrust.x) > 0.1f;
+        adjustThrustY = thrust.y != 0;
+        adjustThrustZ = Mathf.Abs(thrust.z) > 0.1f;
+
+        throttle += thrust.z * throttleIncrease;
+        throttle = Mathf.Clamp(throttle, minThrottle, maxThrottle);
     }
 
-    public override void Deactivate()
+    private void FixedUpdate() {
+
+        if(adjustPitch)
+        {
+            rb.AddTorque(transform.right * (-pitch * pitchStrength), ForceMode.Force);
+        }
+        // else
+        // {
+        //     Vector3 brakingTorque = -rb.angularVelocity * .05f;
+        //     rb.AddTorque(-brakingTorque);
+
+        //     if(brakingTorque.Round(1)== Vector3.zero)
+        //     {
+        //         rb.angularVelocity = Vector3.zero;
+        //     }
+
+        // }
+
+        if(adjustThrustZ)
+        {
+            rb.AddForce(transform.forward * (Mathf.Abs(thrust.z) * throttle), ForceMode.Force);
+        }
+    }
+
+    // private void Update() {
+    //     thrust.z = inputManager.GetMovementVertical(); 
+    //     adjustThrustZ = Mathf.Abs(thrust.z) > 0.1f;
+
+    //     throttle += thrust.z * throttleIncrease;
+    //     throttle = Mathf.Clamp(throttle, minThrottle, maxThrottle);
+
+    //     mousePosition = inputManager.GetMousePosition();
+
+    //     float roll = inputManager.GetMovementHorizontal();
+    //     targetRotation.z = -roll * 4;
+    //     targetRotation.x = GetPitch();
+    // }
+
+    private float GetPitch()
     {
-        base.Deactivate();
-        rb.constraints = RigidbodyConstraints.FreezeAll;
+        pitchDiff = -(centerScreen.y - mousePosition.y);
+        pitchDiff = Mathf.Clamp(pitchDiff, -qtrScreenH, qtrScreenH);
+        return (pitchDiff / qtrScreenH);
     }
 
-    protected override void Look()
-    {
-        Quaternion lookRotation = new Quaternion(); 
-        rotationInput = inputManager.GetShipRotation();
-        var lookRot = _camera.transform.TransformDirection(rotationInput);
-        lookRot = Vector3.ProjectOnPlane(lookRot, Vector3.up);
-        if(lookRot != Vector3.zero)
-        {
-            lookRotation = Quaternion.LookRotation(lookRot);
-            transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime / 2f);
-        }
-    }
-
-    protected override void Move(Vector3 direction)
-    {
-        rightMovement = right * speed * Time.deltaTime * direction.x;
-        upMovement = forward * speed * Time.deltaTime * direction.z;
-        
-        horizontalVelocity = new Vector3();
-        verticalVelocity = new Vector3();
-
-        horizontalInput = rb.velocity + rightMovement;
-        verticalInput = rb.velocity + upMovement;
-
-        if(horizontalInput.x < maxVelocity && horizontalInput.x > -maxVelocity)
-        {
-            horizontalVelocity.x = rightMovement.x;
-        }
-        
-        if(horizontalInput.z < maxVelocity && horizontalInput.z > -maxVelocity)
-        {
-            horizontalVelocity.z = rightMovement.z;
-        }
-
-        if(verticalInput.x < maxVelocity && verticalInput.x > -maxVelocity)
-        {
-            verticalVelocity.x = upMovement.x;
-        }
-        
-        if(verticalInput.z < maxVelocity && verticalInput.z > -maxVelocity)
-        {
-            verticalVelocity.z = upMovement.z;
-        }
-
-        rb.velocity += horizontalVelocity;
-        rb.velocity += verticalVelocity;
-
-        velocityText.text = "Ship velocity: " + rb.velocity;
-    }
-
-    protected void OnCollisionEnter(Collision collision) 
-    {
-        WreckWall wall = collision.gameObject.GetComponent<WreckWall>();
-        if(wall)
-        {
-            playerStateManager.SetOnFoot(wall);
-            currentEntry = Instantiate(entryPoint, collision.gameObject.transform.position, Quaternion.identity);
-        }
-    }
 }
+
+ static class ExtensionMethods
+ {
+     /// <summary>
+     /// Rounds Vector3.
+     /// </summary>
+     /// <param name="vector3"></param>
+     /// <param name="decimalPlaces"></param>
+     /// <returns></returns>
+     public static Vector3 Round(this Vector3 vector3, int decimalPlaces = 2)
+     {
+         float multiplier = 1;
+         for (int i = 0; i < decimalPlaces; i++)
+         {
+             multiplier *= 10f;
+         }
+         return new Vector3(
+             Mathf.Round(vector3.x * multiplier) / multiplier,
+             Mathf.Round(vector3.y * multiplier) / multiplier,
+             Mathf.Round(vector3.z * multiplier) / multiplier);
+     }
+ }

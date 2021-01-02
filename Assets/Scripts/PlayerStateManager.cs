@@ -39,7 +39,7 @@ public class PlayerStateManager : MonoBehaviour
         playerState = PlayerState.FOOT;
         player.gameObject.SetActive(true);
 
-        ship.Deactivate();
+        // ship.Deactivate();
         player.Reactivate();
 
         if(wall)
@@ -54,7 +54,7 @@ public class PlayerStateManager : MonoBehaviour
         playerState = PlayerState.SHIP;
         player.gameObject.SetActive(false);
 
-        ship.Reactivate();
+        // ship.Reactivate();
         player.Deactivate();
     }
 }
