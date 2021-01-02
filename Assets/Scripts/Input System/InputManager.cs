@@ -43,10 +43,9 @@ public class InputManager : MonoBehaviour
        return playerControls.Movement.Vertical.ReadValue<float>();
     }
 
-    public Vector3 GetShipRotation()
+    public float GetShipRoll()
     {
-        Vector2 pos = lookPosition;
-        return new Vector3(pos.x, 0, pos.y);
+       return playerControls.Ship.Roll.ReadValue<float>();
     }
 
     public Vector3 GetMousePosition()
